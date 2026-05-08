@@ -28,8 +28,8 @@ This program generates a random, proper rectangular maze of R rows and C columns
 
 The maze is represented using two 2D arrays:
 
-northWall[R][C] # 1 if the cell's north wall is intact, 0 if removed
-eastWall[R][C] # 1 if the cell's east wall is intact, 0 if removed
+    northWall[R][C] # 1 if the cell's north wall is intact, 0 if removed
+    eastWall[R][C] # 1 if the cell's east wall is intact, 0 if removed
 
 # Wall logic:
 
@@ -56,10 +56,10 @@ The result is a spanning tree over all cells, guaranteeing a unique path between
 
 # Eating a wall — direction logic:
 
-NORTH → northWall[row][col] = 0
-SOUTH → northWall[row + 1][col] = 0 # south wall = north wall of cell below
-EAST → eastWall[row][col] = 0
-WEST → eastWall[row][col - 1] = 0 # west wall = east wall of cell to left
+    NORTH → northWall[row][col] = 0
+    SOUTH → northWall[row + 1][col] = 0 # south wall = north wall of cell below
+    EAST → eastWall[row][col] = 0
+    WEST → eastWall[row][col - 1] = 0 # west wall = east wall of cell to left
 
 # Stack vs Queue?
 
@@ -78,36 +78,36 @@ The solver uses a randomized backtracking algorithm:
 
 # Checking open walls:
 
-North: northWall[row][col] == 0
-South: northWall[row + 1][col] == 0
-East: eastWall[row][col] == 0
-West: eastWall[row][col - 1] == 0
+    North: northWall[row][col] == 0
+    South: northWall[row + 1][col] == 0
+    East: eastWall[row][col] == 0
+    West: eastWall[row][col - 1] == 0
 
 # Controls
 
 # Key **\***Action
 
-SPACE: Generate a new maze
-S: Start solving (after generation completes)
-ESC: Quit
+    SPACE: Generate a new maze
+    S: Start solving (after generation completes)
+    ESC: Quit
 
 # Running the Program
 
-pip install pygame
-python main.py # default 20x25 maze
-python main.py 15 20 # custom 15 rows x 20 cols
+    pip install pygame
+    python main.py # default 20x25 maze
+    python main.py 15 20 # custom 15 rows x 20 cols
 
 # Defaults can also be changed in constants.py:
 
-DEFAULT_ROWS = 20
-DEFAULT_COLS = 25
-CELL_SIZE = 30
-GENERATION_DELAY = 50 # ms per generation step
-SOLVING_DELAY = 100 # ms per solving step
+    DEFAULT_ROWS = 20
+    DEFAULT_COLS = 25
+    CELL_SIZE = 30
+    GENERATION_DELAY = 50 # ms per generation step
+    SOLVING_DELAY = 100 # ms per solving step
 
 # Project Structure
 
-main.py # Entry point and Pygame game loop
-maze_generator.py # Stack-based DFS maze generation (northWall / eastWall)
-maze_solver.py # Backtracking solver with dead-end marking
-constants.py # Colors, directions, animation delays, defaults
+    main.py # Entry point and Pygame game loop
+    maze_generator.py # Stack-based DFS maze generation (northWall / eastWall)
+    maze_solver.py # Backtracking solver with dead-end marking
+    constants.py # Colors, directions, animation delays, defaults
